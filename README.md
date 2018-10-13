@@ -9,27 +9,6 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 ![Example](docs/product1.png)
 
 ## Features
-- [X] Headers
-- [X] Horizontal Rule
-- [X] Unordered List
-- [X] Ordered List
-- [X] Paragraph
-- [X] Strong, Scratch, and Italics
-- [X] Image
-- [X] Link
-- [ ] Table
-- [ ] Workflow
-- [ ] CheckBox
----
-- [X] Code
-- [X] MathJax Support
-- [ ] Code Highlight
----
-- [X] Download as Markdown(.md)
-- [X] Download as HTML(.html)
-- [ ] Download as PDF(.pdf)
-- [ ] Convert HTML to Markdown
-=======
 -  Headers
 -  Horizontal Rule
 -  Unordered List
@@ -50,6 +29,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 - CheckBox
 - Code Highlight
 - Download as PDF(.pdf)
+- Convert HTML to Markdown
 
 ## Cloning the repo
 ```
