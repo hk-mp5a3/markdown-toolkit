@@ -33,7 +33,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 
 ## Cloning the repo
 ```
-git clone git@github.com:zhu-y/markdown-toolkit.git
+git clone https://github.com/zhu-y/markdown-toolkit.git
 ```
 
 ## Run the program
