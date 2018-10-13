@@ -9,27 +9,21 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 ![Example](docs/product1.png)
 
 ## Features
--  Headers
--  Horizontal Rule
--  Unordered List
--  Ordered List
--  Paragraph
--  Strong, Scratch, and Italics
--  Image
--  Link
--  Code
--  MathJax Support
--  Download as Markdown(.md)
--  Download as HTML(.html)
-
-
-## To do
-- Table
-- Workflow
-- CheckBox
-- Code Highlight
-- Download as PDF(.pdf)
-- Convert HTML to Markdown
+|Completed|To do|
+|:---|:---|
+|  Headers|Table|
+|  Horizontal Rule | Workflow|
+|  Unordered List | CheckBox|
+|  Ordered List|Code Highlight|
+|  Paragraph|Download as PDF(.pdf)|
+|  Strong, Scratch, and Italics| Convert HTML to Markdown|
+|  Image|-|
+|  Link|-|
+|  Code|-|
+|  MathJax Support|-|
+|  Download as Markdown(.md)|-|
+|  Download as HTML(.html)|-|
+|  Local Storage|-|
 
 ## Cloning the repo
 ```
