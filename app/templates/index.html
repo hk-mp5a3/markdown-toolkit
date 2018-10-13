@@ -52,6 +52,7 @@
 
 
     <script>
+        // Call API to convert markdown to html
         function md2html() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -59,7 +60,7 @@
                 var response_text = JSON.parse(this.responseText);
                 document.getElementById("html_format").innerHTML = response_text['html_text'];
                 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-                console.log(response_text['html_text'])
+                store_local();
             }
             };
             xhttp.open("POST", "md2html/", true);
@@ -68,6 +69,7 @@
             xhttp.send(JSON.stringify(request_content));
         }
 
+        // Create and download in markdown format
         function download_md() {
             text = document.getElementById("md_text").value;
             var element = document.createElement('a');
@@ -79,6 +81,7 @@
             document.body.removeChild(element);
         }
 
+        // Create and download in html format
         function download_html() {
             head = document.getElementsByTagName('head')[0].innerHTML;
             text = document.getElementById("html_format").innerHTML;
@@ -91,6 +94,25 @@
             element.click();
             document.body.removeChild(element);
         }
+
+        // Local storage
+        function store_local(){
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("md_text", document.getElementById("md_text").value);
+            }
+        }
+
+        // Get local storage
+        function get_local_storage() {
+            if (typeof(Storage) !== "undefined") {
+                document.getElementById("md_text").value = localStorage.getItem("md_text");
+                md2html();
+            } 
+        }
+
+        get_local_storage();
+        
+
     </script>
 </html>
 
