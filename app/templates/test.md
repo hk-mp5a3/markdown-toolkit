@@ -49,11 +49,11 @@ Underscores
 # Ordered List
 ```
 1. This is an ordered list
-2. This is the second line of the ordered list
+1. This is the second line of the ordered list
 ```
 
 1. This is an ordered list
-2. This is the second line of the ordered list
+1. This is the second line of the ordered list
 
 # Paragraph
 ```
