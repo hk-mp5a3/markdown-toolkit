@@ -9,7 +9,6 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 ![Example](docs/product1.png)
 
 ## Features
-<<<<<<< HEAD
 - [X] Headers
 - [X] Horizontal Rule
 - [X] Unordered List
