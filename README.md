@@ -20,14 +20,15 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 - [ ] Table
 - [ ] Workflow
 - [ ] CheckBox
-
+---
 - [X] Code
 - [X] MathJax Support
 - [ ] Code Highlight
-
+---
 - [X] Download as Markdown(.md)
 - [X] Download as HTML(.html)
 - [ ] Download as PDF(.pdf)
+- [ ] Convert HTML to Markdown
 
 ## Cloning the repo
 ```

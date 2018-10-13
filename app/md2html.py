@@ -164,12 +164,18 @@ def convert(md_text):
         line = check_paragraph(line)
 
         # deal with ordered list
-        if len(line.split('.')) != 0 and '1' == line.split('.')[0]:
+        if len(line.split('.')) != 0 and '1.' == line[:2]:
             html_line = '<ol>'
             order_index = index
-            while order_index < len(md_text) and len(md_text[order_index].split('.')) != 0 and str(order_index - index + 1) == md_text[order_index].split('.')[0]:
-                to_replace = str(order_index - index + 1) + '.'
-                html_line = html_line + '<li>' + md_text[order_index].replace(to_replace, '') + '</li>'
+            while order_index < len(md_text)\
+                    and len(md_text[order_index].split('.')) != 0\
+                    and (str(order_index - index + 1) == md_text[order_index].split('.')[0]
+                         or '1' == md_text[order_index].split('.')[0]):
+                to_replace = [str(order_index - index + 1) + '.', '1.']
+                for replace_content in to_replace:
+                    md_text[order_index] = md_text[order_index].replace(replace_content, '')
+                html_line = html_line + '<li>' + md_text[order_index] + '</li>'
+
                 order_index += 1
             index = order_index - 1
             html_line = html_line + '</ol>'
@@ -236,7 +242,6 @@ def convert(md_text):
         if not is_unordered_list:
             html_text = html_text + '<br>'
 
-    print(html_text)
     return html_text
 
 
