@@ -4,11 +4,12 @@
 Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert Markdown to different types of files such as HTML and PDF.
 
 
-[Here]() is a sample web application of Markdown Toolkit.
+[Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
 
 ![Example](docs/product1.png)
 
 ## Features
+<<<<<<< HEAD
 - [X] Headers
 - [X] Horizontal Rule
 - [X] Unordered List
@@ -29,6 +30,27 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 - [X] Download as HTML(.html)
 - [ ] Download as PDF(.pdf)
 - [ ] Convert HTML to Markdown
+=======
+-  Headers
+-  Horizontal Rule
+-  Unordered List
+-  Ordered List
+-  Paragraph
+-  Strong, Scratch, and Italics
+-  Image
+-  Link
+-  Code
+-  MathJax Support
+-  Download as Markdown(.md)
+-  Download as HTML(.html)
+
+
+## To do
+- Table
+- Workflow
+- CheckBox
+- Code Highlight
+- Download as PDF(.pdf)
 
 ## Cloning the repo
 ```
