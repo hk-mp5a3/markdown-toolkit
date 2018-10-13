@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- MathJax -->
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            
+            <a class="navbar-brand" href="#">MarkDown</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="javascript:download_md()">Download Markdown</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="javascript:download_html()">Download HTML</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br />
+        <!-- Text area and display -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 left" overflow-y="scroll" >
+                    <textarea id="md_text" onkeyup="md2html()" class="form-control" rows="25" placeholder="Type your Markdown text here for preview..."></textarea>
+                    </textarea>
+                </div>
+                <div class="col-6 right">
+                  <div id="html_format" style="overflow-y: scroll; height:600px;">
+                </div> 
+                </div> 
+          
+            </div>
+        </div>
+    </body>
+
+
+    <script>
+        function md2html() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var response_text = JSON.parse(this.responseText);
+                document.getElementById("html_format").innerHTML = response_text['html_text'];
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                console.log(response_text['html_text'])
+            }
+            };
+            xhttp.open("POST", "md2html/", true);
+            var request_content = {};
+            request_content['md_text'] = document.getElementById("md_text").value;
+            xhttp.send(JSON.stringify(request_content));
+        }
+
+        function download_md() {
+            text = document.getElementById("md_text").value;
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', 'file.md');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function download_html() {
+            head = document.getElementsByTagName('head')[0].innerHTML;
+            text = document.getElementById("html_format").innerHTML;
+            console.log(text)
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(head+text));
+            element.setAttribute('download', 'file.html');
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+    </script>
+</html>
+
