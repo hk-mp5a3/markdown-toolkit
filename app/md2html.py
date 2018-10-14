@@ -9,7 +9,6 @@ import re
 def check_paragraph(line):
     """ Check whether the line is paragraph, if it is, change it into html format
 
-
     :param line: str, a line in markdown file
     :return: str, the line in html format
     """
@@ -57,7 +56,7 @@ def check_header(line):
 
 
 def contains_only_char(s, char):
-    """ Check whether a str contains only one kind of char
+    """ Check whether a str contains only one kind of chars
 
     :param s: str, the string for checking
     :param char: str, the char for checking
@@ -70,7 +69,7 @@ def contains_only_char(s, char):
 
 
 def strong(line):
-    """ Check if strong words exist, if exist, change it into html format
+    """ Check if strong words exist, if exist, change them into html format
 
     :param line: str, the line in markdown format
     :return: str, the line in html format with strong style
@@ -85,7 +84,7 @@ def strong(line):
 
 
 def scratch(line):
-    """ Check if scratch word exist, if exist, change it into html format
+    """ Check if scratch words exist, if exist, change them into html format
 
     :param line: str, the line in markdown format
     :return: str, the line in html format with scratch style
@@ -100,7 +99,7 @@ def scratch(line):
 
 
 def italics(line):
-    """ Check if italics word exist, if exist, change it into html format
+    """ Check if italics words exist, if exist, change them into html format
 
     :param line: str, the line in markdown format
     :return: str, the line in html format with italics style
@@ -148,7 +147,39 @@ def convert(md_text):
         index += 1
         line = md_text[index]
 
-        # headers
+        # code segment
+        if len(line) >= 3 and line[:3] == '```':
+            html_line = ""
+            language = line[3:].replace(' ', '')
+            if len(language) == 0:
+                language = False
+            order_index = index + 1
+            find_end = False
+            while order_index < len(md_text):
+                if md_text[order_index][:3] == '```':
+                    find_end = True
+                    break
+                else:
+                    temp_line = md_text[order_index]
+                    temp_line = temp_line.replace('<', '&lt;')
+                    temp_line = temp_line.replace('>', '&gt;')
+                    temp_line = temp_line.replace(' ', '&nbsp;')
+                    html_line += temp_line + '<br />'
+                    order_index += 1
+
+            if find_end:
+                # if language is not False:
+                #     html_text += ('<pre><code class="' + language + '">' + html_line + '</code></pre>')
+                # else:
+                html_text += ('<code>' + html_line + '</code>')
+                # print(language)
+                index = order_index
+                continue
+
+        # inline code
+
+
+        # header
         is_header, html_line = check_header(line)
         if is_header:
             html_text = html_text + html_line
@@ -180,27 +211,6 @@ def convert(md_text):
             index = order_index - 1
             html_line = html_line + '</ol>'
             line = html_line
-
-        # code segment
-        if len(line) >= 3 and line[:3] == '```':
-            html_line = ""
-            language = line[3:].replace(' ', '')
-            order_index = index + 1
-            find_end = False
-            while order_index < len(md_text):
-                if md_text[order_index][:3] == '```':
-                    find_end = True
-                    break
-                else:
-                    html_line += (md_text[order_index] + '<br/>')
-                    order_index += 1
-
-            if find_end:
-                html_line = html_line.replace('<script', '&lt;script')
-                html_line = html_line.replace('</script>', '&lt;/script&gt;')
-                html_text += ('<code>' + html_line + '</code>')
-                index = order_index
-                continue
 
         # deal with unordered list
         is_unordered_list, html_line = check_unordered_list(line)
