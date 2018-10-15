@@ -74,8 +74,8 @@ def strong(line):
     :param line: str, the line in markdown format
     :return: str, the line in html format with strong style
     """
-    if line.count('**') % 2 == 0:
-        for i in range(0, line.count('**')):
+    if line.count('**') >= 2:
+        for i in range(0, line.count('**') - line.count('**') % 2):
             if i % 2 == 0:
                 line = line.replace('**', '<strong>', 1)
             else:
@@ -89,8 +89,8 @@ def scratch(line):
     :param line: str, the line in markdown format
     :return: str, the line in html format with scratch style
     """
-    if line.count('~~') % 2 == 0:
-        for i in range(0, line.count('~~')):
+    if line.count('~~') >= 2:
+        for i in range(0, line.count('~~') - line.count('~~') % 2):
             if i % 2 == 0:
                 line = line.replace('~~', '<del>', 1)
             else:
@@ -104,8 +104,8 @@ def italics(line):
     :param line: str, the line in markdown format
     :return: str, the line in html format with italics style
     """
-    if line.count('__') % 2 == 0:
-        for i in range(0, line.count('__')):
+    if line.count('__') >= 2:
+        for i in range(0, line.count('__') - line.count('__') % 2):
             if i % 2 == 0:
                 line = line.replace('__', '<em>', 1)
             else:
