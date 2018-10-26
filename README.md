@@ -17,13 +17,14 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 |  Ordered List|Code Highlight|
 |  Paragraph|Download as PDF(.pdf)|
 |  Strong, Scratch, and Italics| Convert HTML to Markdown|
-|  Image|Inline Code|
+|  Image|-|
 |  Link|-|
 |  Code|-|
 |  MathJax Support|-|
 |  Download as Markdown(.md)|-|
 |  Download as HTML(.html)|-|
 |  Local Storage|-|
+|Inline Code(New)|-|
 
 ## Cloning the repo
 ```
