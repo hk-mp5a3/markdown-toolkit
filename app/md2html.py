@@ -129,6 +129,65 @@ def check_horizontal_rule(line):
     return False, ''
 
 
+def convert_not_inline(line):
+    """ Convert the rest of part which are not inline code but might impact inline code
+
+    This part will dealing with following markdown syntax
+    - strong
+    - scratch
+    - italics
+    - image
+    - link
+
+    :param line: str, the not inline code part of markdown
+    :return: str, the html format
+    """
+    # deal with strong
+    line = strong(line)
+
+    # Scratch
+    line = scratch(line)
+
+    # italics
+    line = italics(line)
+
+    # image
+    while len(re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
+            != 0:
+        match = re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line)
+        pre_text = match.group('pre_text')
+        alt_text = match.group('alt_text')
+        link = match.group('link')
+        after_text = match.group('after_text')
+        img_html = '<img src="' + link + '" alt="' + alt_text + '">'
+        line = pre_text + img_html + after_text
+
+    # link
+    while len(re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
+            != 0:
+        match = re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line)
+        pre_text = match.group('pre_text')
+        alt_text = match.group('alt_text')
+        link = match.group('link')
+        after_text = match.group('after_text')
+        img_html = '<a href="' + link + '">' + alt_text + '</a>'
+        line = pre_text + img_html + after_text
+
+    return line
+
+
+def code_replace(temp_line):
+    """
+
+    :param temp_line:
+    :return:
+    """
+    temp_line = temp_line.replace('<', '&lt;')
+    temp_line = temp_line.replace('>', '&gt;')
+    temp_line = temp_line.replace(' ', '&nbsp;')
+    return temp_line
+
+
 def convert(md_text):
     """ Convert markdown string to html format
 
@@ -161,9 +220,7 @@ def convert(md_text):
                     break
                 else:
                     temp_line = md_text[order_index]
-                    temp_line = temp_line.replace('<', '&lt;')
-                    temp_line = temp_line.replace('>', '&gt;')
-                    temp_line = temp_line.replace(' ', '&nbsp;')
+                    temp_line = code_replace(temp_line)
                     html_line += temp_line + '<br />'
                     order_index += 1
 
@@ -175,9 +232,6 @@ def convert(md_text):
                 # print(language)
                 index = order_index
                 continue
-
-        # inline code
-
 
         # header
         is_header, html_line = check_header(line)
@@ -217,36 +271,19 @@ def convert(md_text):
         if is_unordered_list:
             line = html_line
 
-        # deal with strong
-        line = strong(line)
+        # inline code
+        rest = line
+        line = ''
+        while rest.count('`') > 1:
+            first_sign = rest.index('`')
+            line = line + convert_not_inline(rest[:first_sign])
+            rest = rest[first_sign + 1:]
+            second_sign = rest.index('`')
 
-        # Scratch
-        line = scratch(line)
+            line = line + '<code>' + code_replace(rest[:second_sign]) + '</code>'
+            rest = rest[second_sign + 1:]
 
-        # italics
-        line = italics(line)
-
-        # image
-        while len(re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group())\
-                != 0:
-            match = re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line)
-            pre_text = match.group('pre_text')
-            alt_text = match.group('alt_text')
-            link = match.group('link')
-            after_text = match.group('after_text')
-            img_html = '<img src="' + link + '" alt="' + alt_text + '">'
-            line = pre_text + img_html + after_text
-
-        # link
-        while len(re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group())\
-                != 0:
-            match = re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line)
-            pre_text = match.group('pre_text')
-            alt_text = match.group('alt_text')
-            link = match.group('link')
-            after_text = match.group('after_text')
-            img_html = '<a href="' + link + '">' + alt_text + '</a>'
-            line = pre_text + img_html + after_text
+        line = line + convert_not_inline(rest)
 
         html_text = html_text + line
         if not is_unordered_list:
