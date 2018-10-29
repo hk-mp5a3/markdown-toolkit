@@ -1,12 +1,19 @@
-# Markdown - Toolkit
+
+Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert Markdown to different types of files such as HTML and PDF.
+
+
+[Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
+
+![Example](docs/product1.png)
+
 
 ## Table of contents
-* [Introduction](#introduction)
+
 * [Feature List](#feature-lists)
 * [Download](#cloning-the-repo)
 * [Environment Setup](#set-up-the-environment)
 * [Run Code](#run-the-program)
-* [Support Pacakages](#packages)
+
 * [Syntax Support](#syntax-supported)
     * [Header](#header)
     * [Math](#math-formula)
@@ -20,14 +27,9 @@
     * [Unordered List](#unordered-list)
     * [Ordered List](#ordered-list)
     * [Paragraph](#paragraph)
-
-## Introduction
-Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert Markdown to different types of files such as HTML and PDF.
+* [Support Pacakages](#packages)
 
 
-[Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
-
-![Example](docs/product1.png)
 
 ## Feature Lists
 |Completed|To do|
@@ -61,11 +63,6 @@ pip install -r requirements.txt
 ```
 python run.py
 ```
-
-## Packages
-- Math Support: [MathJax](https://www.mathjax.org/)
-- Frontend Support: [Bootstrap](https://getbootstrap.com/)
-- Backend: [Flask](http://flask.pocoo.org/)
 
 ## Syntax supported
 
@@ -213,4 +210,9 @@ Result:
 
 ![](docs/unordered_list.png)
 
+
+## Packages
+- Math Support: [MathJax](https://www.mathjax.org/)
+- Frontend Support: [Bootstrap](https://getbootstrap.com/)
+- Backend: [Flask](http://flask.pocoo.org/)
 
