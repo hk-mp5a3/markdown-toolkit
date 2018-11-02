@@ -177,10 +177,18 @@ def convert_not_inline(line):
 
 
 def code_replace(temp_line):
-    """
+    """ Replace some special cases in code segment or inline code
 
-    :param temp_line:
-    :return:
+    Note that in HTML if we keep use < or  >, then if we meet js code
+    then the browser will consider it as js code for the html page.
+    Therefore, we need to replace  < and >.
+
+    Moreover, if we have space/tab in the code, the HTML won't
+    display it correctly. Therefore, we need to process it before we
+    send it to frontend.
+
+    :param temp_line: str, the code
+    :return: str, the code with fixed version
     """
     temp_line = temp_line.replace('<', '&lt;')
     temp_line = temp_line.replace('>', '&gt;')
