@@ -60,8 +60,18 @@ pip install -r requirements.txt
 ```
 
 ## Run the program
+
 ```
 python run.py
+```
+
+You can also use [Gunicorn](https://github.com/benoitc/gunicorn) to run the program:
+```
+gunicorn -w [number of workers] -b [host]:[port] app:app
+```
+For example, if you want four works, 127.0.0.1 as host, 4000 as port:
+```
+gunicorn -w 4 -b 127.0.0.1:4000 app:app
 ```
 
 ## Syntax supported
