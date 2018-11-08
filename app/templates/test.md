@@ -52,8 +52,15 @@ $\begin{bmatrix}a & b\\c & d\end{bmatrix}$
 
 # Image
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+
 
 # Link
 
 [alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+
+# checkbox
+
+- [ ] not checked
+- [x] checked
+
+# highlight text
