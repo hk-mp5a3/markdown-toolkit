@@ -2,7 +2,7 @@ from app import app
 from flask import request
 from flask import jsonify
 import json
-from flask import render_template
+from flask import render_template, redirect
 import re
 
 
@@ -365,3 +365,12 @@ def index():
     :return: template, the template of index html.
     """
     return render_template('index.html')
+
+
+@app.route('/help')
+def help():
+    """ Help page
+
+    :return: redirect to the tutorial
+    """
+    return redirect("https://github.com/zhu-y/markdown-toolkit/blob/master/tutorial.md")
