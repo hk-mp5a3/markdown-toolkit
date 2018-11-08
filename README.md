@@ -27,6 +27,9 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Unordered List](#unordered-list)
     * [Ordered List](#ordered-list)
     * [Paragraph](#paragraph)
+    * [Checkbox](#checkbox)
+    * [Highlight](#highlight)
+    * [Block quote](#block-quote)
 * [Support Pacakages](#packages)
 
 
@@ -36,7 +39,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 |:---|:---|
 |  Headers|Table|
 |  Horizontal Rule | Workflow|
-|  Unordered List | CheckBox|
+|  Unordered List | Block quote |
 |  Ordered List|Code Highlight|
 |  Paragraph|Download as PDF(.pdf)|
 |  Strong, Scratch, and Italics| Convert HTML to Markdown|
@@ -48,6 +51,8 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 |  Download as HTML(.html)|-|
 |  Local Storage|-|
 |Inline Code(New)|-|
+|Checkbox|-|
+|Highlight text|-|
 
 ## Cloning the repo
 ```
@@ -220,6 +225,40 @@ Result:
 
 ![](docs/unordered_list.png)
 
+
+#### Checkbox
+
+Markdown:
+```
+- [ ] not checked
+- [x] checked
+```
+Result:
+
+![](docs/checkbox.png)
+
+#### Highlight
+
+Markdown:
+```
+##Highlight my text##
+```
+
+Result:
+
+![](docs/highlight.png)
+
+#### Block quote
+
+Markdown:
+```
+> This is a blockquote
+This is the normal text.
+```
+
+Result:
+
+![](docs/blockquote.png)
 
 ## Packages
 - Math Support: [MathJax](https://www.mathjax.org/)

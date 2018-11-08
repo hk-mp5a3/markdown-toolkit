@@ -9,11 +9,24 @@ import re
 def check_paragraph(line):
     """ Check whether the line is paragraph, if it is, change it into html format
 
-    :param line: str, a line in markdown file
+    :param line: str, a line in markdown syntax
     :return: str, the line in html format
     """
     if len(line) > 3 and line[:3] == '⋅⋅⋅':
         return '<p>' + line[3:] + '</p>'
+    else:
+        return line
+
+
+def check_blockquote(line):
+    """ Check whether the line is blockquote, if it is, change it into html format
+
+    :param line: str, a line in markdown syntax
+    :return: str, the line in html format with block quote
+    """
+
+    if len(line) > 2 and line[:2] == '> ':
+        return '<blockquote class=\"blockquote\">' + line[2:] + '</blockquote>'
     else:
         return line
 
@@ -27,7 +40,7 @@ def check_unordered_list(line):
     """
     if line[:2] == '* ' or line[:2] == '- ' or line[:2] == '+ ' and len(line) > 2:
         return True, '<ul><li>' + line[2:] + '</li></ul>'
-    return False, ''
+    return False, line
 
 
 def check_header(line):
@@ -113,6 +126,16 @@ def italics(line):
     return line
 
 
+def highlight(line):
+    if line.count('##') >= 2:
+        for i in range(0, line.count('##') - line.count('##') % 2):
+            if i % 2 == 0:
+                line = line.replace('##', '<mark>', 1)
+            else:
+                line = line.replace('##', '</mark>', 1)
+    return line
+
+
 def check_horizontal_rule(line):
     """ Check if it is a horizontal rule, if exist, change it into html format
 
@@ -138,6 +161,8 @@ def convert_not_inline(line):
     - italics
     - image
     - link
+    - checkbox
+    - highlight
 
     :param line: str, the not inline code part of markdown
     :return: str, the html format
@@ -150,6 +175,13 @@ def convert_not_inline(line):
 
     # italics
     line = italics(line)
+
+    # highlight
+    line = highlight(line)
+
+    # checkbox
+    line = line.replace("- [ ] ", "<input type=\"checkbox\" onclick=\"return false;\"/> ")
+    line = line.replace("- [x] ", "<input type=\"checkbox\" checked onclick=\"return false;\"/> ")
 
     # image
     while len(re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
@@ -256,6 +288,9 @@ def convert(md_text):
         # paragraph
         line = check_paragraph(line)
 
+        # block quote
+        line = check_blockquote(line)
+
         # deal with ordered list
         if len(line.split('.')) != 0 and '1.' == line[:2]:
             html_line = '<ol>'
@@ -274,11 +309,6 @@ def convert(md_text):
             html_line = html_line + '</ol>'
             line = html_line
 
-        # deal with unordered list
-        is_unordered_list, html_line = check_unordered_list(line)
-        if is_unordered_list:
-            line = html_line
-
         # inline code
         rest = line
         line = ''
@@ -290,6 +320,11 @@ def convert(md_text):
 
             line = line + '<code>' + code_replace(rest[:second_sign]) + '</code>'
             rest = rest[second_sign + 1:]
+
+        # deal with unordered list
+        is_unordered_list, html_line = check_unordered_list(line)
+        if is_unordered_list:
+            line = html_line
 
         line = line + convert_not_inline(rest)
 
