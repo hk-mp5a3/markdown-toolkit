@@ -178,7 +178,7 @@ Text `Inline Code` Text
 Result:
 ![](docs/inline_code.png)
 
-#### Horizontal Rule
+### Horizontal Rule
 
 Markdown:
 ```
@@ -190,7 +190,7 @@ Text
 Result:
 ![](docs/horizontal_rule.png)
 
-#### Paragraph
+### Paragraph
 
 Markdown:
 ```
@@ -202,7 +202,7 @@ Text
 Result:
 ![](docs/paragraph.png)
 
-#### Ordered List
+### Ordered List
 
 Markdown:
 ```
@@ -212,7 +212,7 @@ Markdown:
 Result:
 ![](docs/ordered_list.png)
 
-#### Unordered List
+### Unordered List
 
 Markdown:
 ```
@@ -226,7 +226,7 @@ Result:
 ![](docs/unordered_list.png)
 
 
-#### Checkbox
+### Checkbox
 
 Markdown:
 ```
@@ -248,7 +248,7 @@ Result:
 
 ![](docs/highlight.png)
 
-#### Block quote
+### Block quote
 
 Markdown:
 ```
@@ -264,4 +264,5 @@ Result:
 - Math Support: [MathJax](https://www.mathjax.org/)
 - Frontend Support: [Bootstrap](https://getbootstrap.com/)
 - Backend: [Flask](http://flask.pocoo.org/)
-
+To do:
+- Code highlight support: [highlight.js](https://github.com/highlightjs/highlight.js)
