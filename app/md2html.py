@@ -38,8 +38,19 @@ def check_unordered_list(line):
     :return: boolean, whether a line is unordered list
              str, the line in html format
     """
+    count_space = 0
+    for char in line:
+        if char == ' ':
+            count_space += 1
+        else:
+            break
+    line = line[count_space:]
+
     if line[:2] == '* ' or line[:2] == '- ' or line[:2] == '+ ' and len(line) > 2:
-        return True, '<li>' + line[2:] + '</li>'
+        line = '<li>' + line[2:] + '</li>'
+        for i in range(0, int(count_space/4)):
+            line = '<ul>' + line + '</ul>'
+        return True, line
     return False, ''
 
 
@@ -264,6 +275,7 @@ def convert(md_text):
                     temp_line = md_text[order_index]
                     temp_line = code_replace(temp_line)
                     html_line += temp_line + '<br />'
+
                     order_index += 1
 
             if find_end:
@@ -339,6 +351,7 @@ def convert(md_text):
         html_text = html_text + line
         if not is_unordered_list:
             html_text = html_text + '<br>'
+            last_line_unordered = False
 
     return html_text
 
