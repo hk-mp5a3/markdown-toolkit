@@ -39,8 +39,8 @@ def check_unordered_list(line):
              str, the line in html format
     """
     if line[:2] == '* ' or line[:2] == '- ' or line[:2] == '+ ' and len(line) > 2:
-        return True, '<ul><li>' + line[2:] + '</li></ul>'
-    return False, line
+        return True, '<li>' + line[2:] + '</li>'
+    return False, ''
 
 
 def check_header(line):
@@ -242,6 +242,8 @@ def convert(md_text):
 
     # begin looping from the first line
     index = -1
+    last_line_unordered = False
+
     while index < len(md_text) - 1:
         index += 1
         line = md_text[index]
@@ -309,6 +311,17 @@ def convert(md_text):
             html_line = html_line + '</ol>'
             line = html_line
 
+        # deal with unordered list
+        is_unordered_list, html_line = check_unordered_list(line)
+        if is_unordered_list and (not last_line_unordered):
+            line = '<ul>' + html_line
+            last_line_unordered = True
+        elif is_unordered_list and last_line_unordered:
+            line = html_line
+            last_line_unordered = True
+        elif (not is_unordered_list) and last_line_unordered:
+            line = '</ul>' + line
+
         # inline code
         rest = line
         line = ''
@@ -320,11 +333,6 @@ def convert(md_text):
 
             line = line + '<code>' + code_replace(rest[:second_sign]) + '</code>'
             rest = rest[second_sign + 1:]
-
-        # deal with unordered list
-        is_unordered_list, html_line = check_unordered_list(line)
-        if is_unordered_list:
-            line = html_line
 
         line = line + convert_not_inline(rest)
 
