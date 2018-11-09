@@ -123,13 +123,21 @@ Result:
 
 ## Ordered List
 
+
 Markdown:
 ```
-1. This is an ordered list
-1. This is the second line of the ordered list
+- First Level 1
+    - Second Level 1
+    - Second Level 2
+        - Third Level
+    - Second Level 3
+- First Level 2 
 ```
+
 Result:
+
 ![](docs/ordered_list.png)
+
 
 ## Unordered List
 
