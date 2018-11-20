@@ -101,14 +101,23 @@ Result:
 ### Math formula
 More syntax about MathJax please refer [Here](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
 
+#### Math formula itself as a line
 Markdown:
 ```
-$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$
-$\begin{bmatrix}a & b\\c & d\end{bmatrix}$
+$$S_{j,k} = L - \sum_{i=j}^{k-1}(c_i + 1)-C_k$$$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$
 ```
 
 Result:
 ![](docs/math.png)
+
+#### inline math formula
+Markdown:
+```
+$\begin{bmatrix}a & b\\c & d\end{bmatrix}$
+```
+
+Result:
+![](docs/math1.png)
 
 ### Strong, Italics, and Scratch
 
@@ -130,11 +139,11 @@ If you want to insert an image from online source, include your image address in
 
 Markdown:
 ```
-![alt text](https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg)
+![alt text](https://i.redd.it/zo9z3a5b0vky.gif)
 ```
 
 Result:
-![alt text](https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg)
+![alt text](https://i.redd.it/zo9z3a5b0vky.gif)
 
 #### Local Source
 
@@ -171,7 +180,7 @@ Result:
 #### Inline Code
 
 Markdown:
-```buildoutcfg
+```
 Text `Inline Code` Text
 ```
 
@@ -206,27 +215,27 @@ Result:
 
 Markdown:
 ```
-- First Level 1
-    - Second Level 1
-    - Second Level 2
-        - Third Level
-    - Second Level 3
-- First Level 2 
+1. First Line
+1. Second Line
+1. Third Line
 ```
+
 Result:
+
 ![](docs/ordered_list.png)
 
 ### Unordered List
 
 Markdown:
 ```
-* Unordered list can use asterisks
-- Or minuses
-+ Or pluses
+- First Level 1
+    * Second Level 1
+    - Second Level 2
+        - Third Level
+    - Second Level 3
++ First Level 2 
 ```
-
 Result:
-
 ![](docs/unordered_list.png)
 
 

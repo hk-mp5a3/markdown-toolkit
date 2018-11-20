@@ -190,10 +190,6 @@ def convert_not_inline(line):
     # highlight
     line = highlight(line)
 
-    # checkbox
-    line = line.replace("- [ ] ", "<input type=\"checkbox\" onclick=\"return false;\"/> ")
-    line = line.replace("- [x] ", "<input type=\"checkbox\" checked onclick=\"return false;\"/> ")
-
     # image
     while len(re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
             != 0:
@@ -204,6 +200,7 @@ def convert_not_inline(line):
         after_text = match.group('after_text')
         img_html = '<img src="' + link + '" alt="' + alt_text + '">'
         line = pre_text + img_html + after_text
+        print(link, alt_text)
 
     # link
     while len(re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
@@ -304,6 +301,11 @@ def convert(md_text):
 
         # block quote
         line = check_blockquote(line)
+
+        # checkbox
+        line = line.replace("- [ ] ", "<input type=\"checkbox\" onclick=\"return false;\"/> ")
+        line = line.replace("- [x] ", "<input type=\"checkbox\" checked onclick=\"return false;\"/> ")
+
 
         # deal with ordered list
         if len(line.split('.')) != 0 and '1.' == line[:2]:
