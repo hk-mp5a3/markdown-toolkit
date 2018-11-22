@@ -396,4 +396,4 @@ def help():
 
     :return: redirect to the tutorial
     """
-    return redirect("https://github.com/zhu-y/markdown-toolkit/blob/master/tutorial.md")
+    return render_template('help.html')
