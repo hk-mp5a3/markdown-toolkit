@@ -89,6 +89,7 @@
         function download_html() {
             head = document.getElementsByTagName('head')[0].innerHTML;
             text = document.getElementById("html_format").innerHTML;
+            text = `<div style="margin: 10%;">` + text + `</div>`
             console.log(text)
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(head+text));
