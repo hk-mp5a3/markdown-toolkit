@@ -71,6 +71,12 @@ python run.py
 ```
 
 You can also use [Gunicorn](https://github.com/benoitc/gunicorn) to run the program:
+With default number of workers:
+```
+sh gunicorn.sh
+```
+
+You can also change the number of workers as you want:
 ```
 gunicorn -w [number of workers] -b [host]:[port] app:app
 ```
