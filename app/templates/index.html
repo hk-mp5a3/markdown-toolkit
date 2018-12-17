@@ -48,7 +48,7 @@
                     <br>
                     <form>
                         <div class="form-group">
-                            <input type="file" class="btn form-control-file" id="uploadmd">
+                            <input type="file" class="btn form-control-file" id="uploadmd" accept=".md,.tet">
                         </div>
                     </form>
                 </div>
@@ -64,7 +64,7 @@
 
     <script>
         get_local_storage();
-        
+
         $(document).ready(function(){
             $("#uploadmd").on('change',function(evt){
                 //do whatever you want
