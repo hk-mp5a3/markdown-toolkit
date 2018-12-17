@@ -53,6 +53,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 |Inline Code(New)|-|
 |Checkbox|-|
 |Highlight text|-|
+|Upload Markdown File|-|
 
 ## Cloning the repo
 ```
