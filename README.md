@@ -9,12 +9,11 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 
 ## Table of contents
 
-* [Feature List](#feature-lists)
-* [Download](#cloning-the-repo)
-* [Environment Setup](#set-up-the-environment)
-* [Run Code](#run-the-program)
-
-* [Syntax Support](#syntax-supported)
+- [Feature List](#feature-lists)
+- [Download](#cloning-the-repo)
+- [Environment Setup](#set-up-the-environment)
+- [Run Code](#run-the-program)
+- [Syntax Support](#syntax-supported)
     * [Header](#header)
     * [Math](#math-formula)
     * [Code](#code)
@@ -30,7 +29,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Checkbox](#checkbox)
     * [Highlight](#highlight)
     * [Block quote](#block-quote)
-* [Support Pacakages](#packages)
+- [Support Pacakages](#packages)
 
 
 
