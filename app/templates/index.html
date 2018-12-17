@@ -34,7 +34,7 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="/help">Help</a>
-                    </li>
+                    </li>                   
                 </ul>
             </div>
         </nav>
@@ -45,6 +45,12 @@
                 <div class="col-6 left" overflow-y="scroll" >
                     <textarea id="md_text" onkeyup="md2html()" class="form-control" rows="25" placeholder="Type your Markdown text here for preview..."></textarea>
                     </textarea>
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <input type="file" class="btn form-control-file" id="uploadmd">
+                        </div>
+                    </form>
                 </div>
                 <div class="col-6 right">
                   <div id="html_format" style="overflow-y: scroll; height:600px;">
@@ -59,7 +65,30 @@
     <script>
         get_local_storage();
         
+        $(document).ready(function(){
+            $("#uploadmd").on('change',function(evt){
+                //do whatever you want
+                if(!window.FileReader) return; 
 
+                var reader = new FileReader();
+
+                reader.onload = function(evt) {
+                    if(evt.target.readyState != 2) return;
+                    if(evt.target.error) {
+                        alert('Error while reading file');
+                        return;
+                    }
+
+                    filecontent = evt.target.result;
+
+                    document.getElementById("md_text").value = document.getElementById("md_text").value + evt.target.result;
+                    md2html();
+                };
+
+                reader.readAsText(evt.target.files[0]);
+
+            });
+        });
     </script>
 </html>
 
