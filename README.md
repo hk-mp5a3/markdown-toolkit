@@ -42,7 +42,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 |  Ordered List|Code Highlight|
 |  Paragraph|Download as PDF(.pdf)|
 |  Strong, Scratch, and Italics| Convert HTML to Markdown|
-|  Image|-|
+|  Image|Link in Markdown|
 |  Link|-|
 |  Code|-|
 |  MathJax Support|-|
