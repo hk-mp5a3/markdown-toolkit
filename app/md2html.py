@@ -4,6 +4,8 @@ from flask import jsonify
 import json
 from flask import render_template, redirect
 import re
+from flask import session
+
 
 
 def check_paragraph(line):
@@ -368,6 +370,7 @@ def md2html():
     :return: response, contains the text in HTML format
     """
     # Get the markdown text from the request
+
     data = json.loads(request.data)
     md_text = data['md_text']
 
@@ -378,16 +381,9 @@ def md2html():
     response_dict = {"html_text": html_text}
     response = jsonify(response_dict)
     response.headers.add('Access-Control-Allow-Origin', '*')
+    print(session)
     return response
 
-
-@app.route('/')
-def index():
-    """ Index page. Return the template.
-
-    :return: template, the template of index html.
-    """
-    return render_template('index.html')
 
 
 @app.route('/help')
