@@ -67,8 +67,7 @@ gunicorn -w 4 -b 127.0.0.1:4000 app:app
 
 ## Feature Lists
 
-### Completed 
-- Links in Markdown
+### Completed
 - Headers
 - Horizontal Rule
 - Unordered List
