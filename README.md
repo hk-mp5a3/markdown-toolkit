@@ -32,28 +32,6 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 - [Support Pacakages](#packages)
 
 
-
-## Feature Lists
-|Completed|To do|
-|:---|:---|
-|  Headers|Table|
-|  Horizontal Rule | Workflow|
-|  Unordered List | Block quote |
-|  Ordered List|Code Highlight|
-|  Paragraph|Download as PDF(.pdf)|
-|  Strong, Scratch, and Italics| Convert HTML to Markdown|
-|  Image|Link in Markdown|
-|  Link|-|
-|  Code|-|
-|  MathJax Support|-|
-|  Download as Markdown(.md)|-|
-|  Download as HTML(.html)|-|
-|  Local Storage|-|
-|Inline Code(New)|-|
-|Checkbox|-|
-|Highlight text|-|
-|Upload Markdown File|-|
-
 ## Cloning the repo
 ```
 git clone https://github.com/zhu-y/markdown-toolkit.git
@@ -84,6 +62,38 @@ For example, if you want four workers, 127.0.0.1 as host, 4000 as port:
 ```
 gunicorn -w 4 -b 127.0.0.1:4000 app:app
 ```
+
+
+
+## Feature Lists
+
+### Completed 
+- Links in Markdown
+- Headers
+- Horizontal Rule
+- Unordered List
+- Ordered List
+- Paragraph
+- Strong, Scratch, and Italics
+- Images
+- Links(in markdown file/websites)
+- Code Segment/Inline Code
+- MathJax Support
+- Download as Markdown/HTML
+- Local Storage
+- Checkbox
+- Highlight Text
+- Upload Markdown File
+
+### To do
+- Table
+- Workflow
+- Code Highlight
+- Download as PDF
+- Convert HTML to Markdown
+- Login
+- Save Notes into User's Private Notebook
+
 
 ## Syntax supported
 
