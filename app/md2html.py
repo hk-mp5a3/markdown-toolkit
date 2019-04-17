@@ -201,9 +201,15 @@ def convert_not_inline(line):
         alt_text = match.group('alt_text')
         link = match.group('link')
         after_text = match.group('after_text')
-        img_html = '<img src="' + link + '" alt="' + alt_text + '">'
+
+        # scale image
+        if len(re.match(r'(?P<pre_link>.*)#scale=(?P<scale>[0-9]*)', link).group()) != 0:
+            match_scale = re.match(r'(?P<pre_link>.*)#scale=(?P<scale>[0-9]*)', link)
+            scale = match_scale.group('scale')
+            img_html = '<img style="height:' + str(scale) + '%" src="' + link + '" alt="' + alt_text + '">'
+        else:
+            img_html = '<img src="' + link + '" alt="' + alt_text + '">'
         line = pre_text + img_html + after_text
-        print(link, alt_text)
 
     # link
     while len(re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
