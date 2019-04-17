@@ -19,7 +19,6 @@
     <body>
         <!-- Navbar -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-            
             <a class="navbar-brand" href="#">MarkDown Toolkit</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -34,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" target="_blank" href="/help">Help</a>
-                    </li>                   
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -54,9 +53,9 @@
                 </div>
                 <div class="col-6 right">
                   <div id="html_format" style="overflow-y: scroll; height:600px;">
-                </div> 
-                </div> 
-          
+                </div>
+                </div>
+
             </div>
         </div>
     </body>
@@ -68,7 +67,7 @@
         $(document).ready(function(){
             $("#uploadmd").on('change',function(evt){
                 //do whatever you want
-                if(!window.FileReader) return; 
+                if(!window.FileReader) return;
 
                 var reader = new FileReader();
 
@@ -91,5 +90,3 @@
         });
     </script>
 </html>
-
-    
