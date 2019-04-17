@@ -172,6 +172,20 @@ Markdown:
 Result:
 ![alt text](docs/hello.png)
 
+#### Scale
+
+When the image is too large or too small, you can scale the image by adding '#[scale percentage]' to the end of the image link.
+
+For example, if you originally insert image by coding:
+```
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg)
+```
+And you want to scale it to 50% of the original picture, you can use:
+
+```
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg#scale=50)
+```
+
 ### Link
 
 Markdown:
@@ -182,7 +196,7 @@ Markdown:
 Result:
 [Markdown Toolkit Github Repo](https://github.com/zhu-y/markdown-toolkit)
 
-### Code 
+### Code
 
 #### Code Segment
 
@@ -248,7 +262,7 @@ Markdown:
     - Second Level 2
         - Third Level
     - Second Level 3
-+ First Level 2 
++ First Level 2
 ```
 Result:
 ![](docs/unordered_list.png)
