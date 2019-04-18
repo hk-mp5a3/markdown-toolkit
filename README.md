@@ -174,17 +174,19 @@ Result:
 
 #### Scale
 
-When the image is too large or too small, you can scale the image by adding '#[scale percentage]' to the end of the image link.
+When the image is too large or too small, you can scale the image by adding '#[scale number]' to the end of the image link.
 
 For example, if you originally insert image by coding:
 ```
 ![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg)
 ```
-And you want to scale it to 50% of the original picture, you can use:
-
+And you want to scale it, you can use:
 ```
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg#scale=40)
 ![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg#scale=50)
 ```
+And you can see the result as following:
+![](docs/scale_image_example.png)
 
 ### Link
 
