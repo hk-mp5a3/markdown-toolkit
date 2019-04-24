@@ -288,10 +288,11 @@ def convert(md_text):
                     order_index += 1
 
             if find_end:
-                # if language is not False:
-                #     html_text += ('<pre><code class="' + language + '">' + html_line + '</code></pre>')
-                # else:
-                html_text += ('<code>' + html_line + '</code>')
+                if language is False:
+                    html_text += ('<pre><code>' + html_line + '</code></pre>')
+                else:
+                    html_text += ('<pre><code class="' + str(language) + '">' + html_line + '</code></pre>')
+
                 # print(language)
                 index = order_index
                 continue
@@ -357,7 +358,7 @@ def convert(md_text):
             rest = rest[first_sign + 1:]
             second_sign = rest.index('`')
 
-            line = line + '<code>' + code_replace(rest[:second_sign]) + '</code>'
+            line = line + '<pre><code>' + code_replace(rest[:second_sign]) + '</code></pre>'
             rest = rest[second_sign + 1:]
 
         line = line + convert_not_inline(rest)
@@ -408,4 +409,4 @@ def help():
 
     :return: redirect to the tutorial
     """
-    return render_template('help.html')
+    return redirect("https://github.com/zhu-y/markdown-toolkit")
