@@ -202,8 +202,21 @@ Result:
 
 #### Code Segment
 
-Markdown:
-![](docs/code_origin.png)
+Markdown(Python code)
+``` Python
+def foo():
+    pass
+```
+
+Markdown(C++ code)
+``` C++
+#include<iostream>
+using namespace std;
+
+int main(){
+    cout << "Hello World";
+}
+```
 
 Result:
 ![](docs/code_result.png)
