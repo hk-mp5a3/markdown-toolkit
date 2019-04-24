@@ -5,6 +5,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 [Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
 
 ![Example](docs/product1.png)
+![Example](docs/product2.png)
 
 
 ## Table of contents
@@ -202,13 +203,13 @@ Result:
 #### Code Segment
 
 Markdown(Python code)
-``` Python
+``` python
 def foo():
     pass
 ```
 
 Markdown(C++ code)
-``` C++
+``` cpp
 #include<iostream>
 using namespace std;
 
