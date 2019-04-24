@@ -18,7 +18,6 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Math](#math-formula)
     * [Code](#code)
         * [Code Segment](#code-segment)
-        * [Inline Code](#inline-code)
     * [Insert image](#image)
     * [Insert link](#link)
     * [Strong, italics, and scratch](#strong-italics-and-scratch)
@@ -202,21 +201,25 @@ Result:
 
 #### Code Segment
 
-Markdown:
-![](docs/code_origin.png)
+Markdown(Python code)
+``` Python
+def foo():
+    pass
+```
+
+Markdown(C++ code)
+``` C++
+#include<iostream>
+using namespace std;
+
+int main(){
+    cout << "Hello World";
+}
+```
 
 Result:
 ![](docs/code_result.png)
 
-#### Inline Code
-
-Markdown:
-```
-Text `Inline Code` Text
-```
-
-Result:
-![](docs/inline_code.png)
 
 ### Horizontal Rule
 
