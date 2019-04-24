@@ -14,9 +14,14 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/md2html.js') }}"></script>
         <!-- <script type="text/javascript" src='{{ url_for("static", filename="js/MathJax.js?config=TeX-MML-AM_CHTML") }}'></script> -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <!--code highlight-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
     </head>
 
     <body>
+        <!--code highlight-->
+
         <!-- Navbar -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">MarkDown Toolkit</a>
@@ -88,5 +93,7 @@
 
             });
         });
+
+
     </script>
 </html>
