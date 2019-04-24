@@ -5,11 +5,11 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 [Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
 
 ![Example](docs/product1.png)
-![Example](docs/product2.png)
 
 
 ## Table of contents
 
+- [Do you want a new feature?](#Do-you-want-a-new-feature)
 - [Feature List](#feature-lists)
 - [Download](#cloning-the-repo)
 - [Environment Setup](#set-up-the-environment)
@@ -31,6 +31,8 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Block quote](#block-quote)
 - [Support Pacakages](#packages)
 
+## Do you want a new feature
+If you want a new feature, you can open an issue in this github repository. If you want to contribute to this repository, you are welcome to do so!
 
 ## Cloning the repo
 ```
@@ -83,11 +85,11 @@ gunicorn -w 4 -b 127.0.0.1:4000 app:app
 - Checkbox
 - Highlight Text
 - Upload Markdown File
+- Code Highlight
 
 ### To do
 - Table
 - Workflow
-- Code Highlight
 - Download as PDF
 - Convert HTML to Markdown
 - Login
@@ -315,3 +317,5 @@ Result:
 
 To do:
 - Code highlight support: [highlight.js](https://github.com/highlightjs/highlight.js)
+
+
