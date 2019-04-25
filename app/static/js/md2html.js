@@ -56,8 +56,15 @@ function download_html() {
     if (this.readyState == 4 && this.status == 200) {
         var response_text = JSON.parse(this.responseText);
         text = response_text['html_text'];
-        text = `<body><script>hljs.initHighlightingOnLoad();</script><div style="margin: 10%;">` + text + `</div>
-        </body>       </html> `; // add some style for the body part
+        text = `<body><script>
+
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+
+
+        </script><div style="margin: 10%;">` + text + `</div>
+        </body></html> `; // add some style for the body part
 
         // send it to generate the file to download
         var element = document.createElement('a');
