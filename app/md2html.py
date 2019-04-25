@@ -6,6 +6,7 @@ from flask import jsonify
 import json
 from flask import render_template, redirect
 import re
+from table import *
 
 
 def check_paragraph(line):
@@ -297,6 +298,10 @@ def convert(md_text):
                 index = order_index
                 continue
 
+        pre_text = md_text[:index]
+        md_text = pre_text + table(md_text[index:])
+        line = md_text[index]
+
         # header
         is_header, html_line = check_header(line)
         if is_header:
@@ -367,7 +372,7 @@ def convert(md_text):
         if not is_unordered_list:
             html_text = html_text + '<br>'
             last_line_unordered = False
-
+    html_text = table(html_text)
     return html_text
 
 
