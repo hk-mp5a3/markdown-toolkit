@@ -19,6 +19,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Math](#math-formula)
     * [Code](#code)
         * [Code Segment](#code-segment)
+    * [Tables](#tables)
     * [Insert image](#image)
     * [Insert link](#link)
     * [Strong, italics, and scratch](#strong-italics-and-scratch)
@@ -86,9 +87,9 @@ gunicorn -w 4 -b 127.0.0.1:4000 app:app
 - Highlight Text
 - Upload Markdown File
 - Code Highlight
+- Table
 
 ### To do
-- Table
 - Workflow
 - Download as PDF
 - Convert HTML to Markdown
@@ -135,6 +136,18 @@ $\begin{bmatrix}a & b\\c & d\end{bmatrix}$
 
 Result:
 ![](docs/math1.png)
+
+### Tables
+You can insert a table by coding:
+```
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:|:-----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+```
+The result will be:
+![](docs/tables.png)
 
 ### Strong, Italics, and Scratch
 
