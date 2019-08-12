@@ -5,19 +5,6 @@ import json
 from flask import render_template, redirect
 import re
 
-
-def check_paragraph(line):
-    """ Check whether the line is paragraph, if it is, change it into html format
-
-    :param line: str, a line in markdown syntax
-    :return: str, the line in html format
-    """
-    if len(line) > 3 and line[:3] == '⋅⋅⋅':
-        return '<p>' + line[3:] + '</p>'
-    else:
-        return line
-
-
 def check_blockquote(line):
     """ Check whether the line is blockquote, if it is, change it into html format
 
@@ -298,9 +285,6 @@ def convert(md_text):
         if is_horizontal_rule:
             html_text = html_text + html_line
             continue
-
-        # paragraph
-        line = check_paragraph(line)
 
         # block quote
         line = check_blockquote(line)
