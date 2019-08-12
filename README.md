@@ -1,14 +1,12 @@
 
 Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert Markdown to different types of files such as HTML and PDF.
 
-
 [Here](http://yzhu.pythonanywhere.com/) is a sample web application of Markdown Toolkit.
 
 ![Example](docs/product1.png)
 
-
 ## Table of contents
-
+- [Deployment](#Deployment)
 - [Do you want a new feature?](#Do-you-want-a-new-feature)
 - [Feature List](#feature-lists)
 - [Download](#cloning-the-repo)
@@ -31,6 +29,15 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Highlight](#highlight)
     * [Block quote](#block-quote)
 - [Support Pacakages](#packages)
+
+
+## Deployment
+"[Kubernetes](https://kubernetes.io/) is an open-source system for automating deployment, scaling, and management of containerized applications. Kubernetes builds upon 15 years of experience of running production workloads at **Google**, combined with best-of-breed ideas and practices from the community."
+
+If you are interested in deploy this mini-app by using Kubernetes, I would highly recommend you to do it! Here is the [tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/) which might help! I just tried it out:
+
+![](docs/kubernetes_example.png)
+
 
 ## Do you want a new feature
 If you want a new feature, you can open an issue in this github repository. If you want to contribute to this repository, you are welcome to do so!
