@@ -9,6 +9,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
 
 ## Table of contents
 
+- [Do you want a new feature?](#Do-you-want-a-new-feature)
 - [Feature List](#feature-lists)
 - [Download](#cloning-the-repo)
 - [Environment Setup](#set-up-the-environment)
@@ -18,7 +19,7 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Math](#math-formula)
     * [Code](#code)
         * [Code Segment](#code-segment)
-        * [Inline Code](#inline-code)
+    * [Tables](#tables)
     * [Insert image](#image)
     * [Insert link](#link)
     * [Strong, italics, and scratch](#strong-italics-and-scratch)
@@ -31,28 +32,8 @@ Welcome to **Markdown Toolkit**! Markdown Toolkit is an application to convert M
     * [Block quote](#block-quote)
 - [Support Pacakages](#packages)
 
-
-
-## Feature Lists
-|Completed|To do|
-|:---|:---|
-|  Headers|Table|
-|  Horizontal Rule | Workflow|
-|  Unordered List | Block quote |
-|  Ordered List|Code Highlight|
-|  Paragraph|Download as PDF(.pdf)|
-|  Strong, Scratch, and Italics| Convert HTML to Markdown|
-|  Image|Link in Markdown|
-|  Link|-|
-|  Code|-|
-|  MathJax Support|-|
-|  Download as Markdown(.md)|-|
-|  Download as HTML(.html)|-|
-|  Local Storage|-|
-|Inline Code(New)|-|
-|Checkbox|-|
-|Highlight text|-|
-|Upload Markdown File|-|
+## Do you want a new feature
+If you want a new feature, you can open an issue in this github repository. If you want to contribute to this repository, you are welcome to do so!
 
 ## Cloning the repo
 ```
@@ -84,6 +65,37 @@ For example, if you want four workers, 127.0.0.1 as host, 4000 as port:
 ```
 gunicorn -w 4 -b 127.0.0.1:4000 app:app
 ```
+
+
+
+## Feature Lists
+
+### Completed
+- Headers
+- Horizontal Rule
+- Unordered List
+- Ordered List
+- Paragraph
+- Strong, Scratch, and Italics
+- Images
+- Links(in markdown file/websites)
+- Code Segment/Inline Code
+- MathJax Support
+- Download as Markdown/HTML
+- Local Storage
+- Checkbox
+- Highlight Text
+- Upload Markdown File
+- Code Highlight
+- Table
+
+### To do
+- Workflow
+- Download as PDF
+- Convert HTML to Markdown
+- Login
+- Save Notes into User's Private Notebook
+
 
 ## Syntax supported
 
@@ -125,6 +137,18 @@ $\begin{bmatrix}a & b\\c & d\end{bmatrix}$
 Result:
 ![](docs/math1.png)
 
+### Tables
+You can insert a table by coding:
+```
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:|-----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+```
+The result will be:
+![](docs/tables.png)
+
 ### Strong, Italics, and Scratch
 
 Markdown:
@@ -163,6 +187,22 @@ Markdown:
 Result:
 ![alt text](docs/hello.png)
 
+#### Scale
+
+When the image is too large or too small, you can scale the image by adding '#[scale number]' to the end of the image link.
+
+For example, if you originally insert image by coding:
+```
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg)
+```
+And you want to scale it, you can use:
+```
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg#scale=40)
+![](https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg#scale=50)
+```
+And you can see the result as following:
+![](docs/scale_image_example.png)
+
 ### Link
 
 Markdown:
@@ -173,25 +213,29 @@ Markdown:
 Result:
 [Markdown Toolkit Github Repo](https://github.com/zhu-y/markdown-toolkit)
 
-### Code 
+### Code
 
 #### Code Segment
 
-Markdown:
-![](docs/code_origin.png)
+Markdown(Python code)
+``` python
+def foo():
+    pass
+```
+
+Markdown(C++ code)
+``` cpp
+#include<iostream>
+using namespace std;
+
+int main(){
+    cout << "Hello World";
+}
+```
 
 Result:
 ![](docs/code_result.png)
 
-#### Inline Code
-
-Markdown:
-```
-Text `Inline Code` Text
-```
-
-Result:
-![](docs/inline_code.png)
 
 ### Horizontal Rule
 
@@ -239,7 +283,7 @@ Markdown:
     - Second Level 2
         - Third Level
     - Second Level 3
-+ First Level 2 
++ First Level 2
 ```
 Result:
 ![](docs/unordered_list.png)
@@ -283,5 +327,8 @@ Result:
 - Math Support: [MathJax](https://www.mathjax.org/)
 - Frontend Support: [Bootstrap](https://getbootstrap.com/)
 - Backend: [Flask](http://flask.pocoo.org/)
+
 To do:
 - Code highlight support: [highlight.js](https://github.com/highlightjs/highlight.js)
+
+
