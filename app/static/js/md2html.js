@@ -5,6 +5,9 @@ function md2html() {
     if (this.readyState == 4 && this.status == 200) {
         var response_text = JSON.parse(this.responseText);
         document.getElementById("html_format").innerHTML = response_text['html_text'];
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         store_local();
     }
@@ -41,7 +44,9 @@ function download_html() {
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
         </script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-        </head>
+        <!--code highlight-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
     `;
 
     // the body of the download html
@@ -51,7 +56,15 @@ function download_html() {
     if (this.readyState == 4 && this.status == 200) {
         var response_text = JSON.parse(this.responseText);
         text = response_text['html_text'];
-        text = `<body><div style="margin: 10%;">` + text + `</div></body></html>`; // add some style for the body part
+        text = `<body><script>
+
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+
+
+        </script><div style="margin: 10%;">` + text + `</div>
+        </body></html> `; // add some style for the body part
 
         // send it to generate the file to download
         var element = document.createElement('a');
@@ -83,5 +96,5 @@ function get_local_storage() {
     if (typeof(Storage) !== "undefined") {
         document.getElementById("md_text").value = localStorage.getItem("md_text");
         md2html();
-    } 
+    }
 }

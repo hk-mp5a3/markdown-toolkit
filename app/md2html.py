@@ -1,9 +1,12 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from app import app
 from flask import request
 from flask import jsonify
 import json
 from flask import render_template, redirect
 import re
+from table import *
 
 def check_blockquote(line):
     """ Check whether the line is blockquote, if it is, change it into html format
@@ -181,14 +184,21 @@ def convert_not_inline(line):
     # image
     while len(re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
             != 0:
+
         match = re.match(r'((?P<pre_text>.*)!\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line)
         pre_text = match.group('pre_text')
         alt_text = match.group('alt_text')
         link = match.group('link')
         after_text = match.group('after_text')
-        img_html = '<img src="' + link + '" alt="' + alt_text + '">'
+
+        # scale image
+        if len(re.match(r'((?P<pre_link>.*)#scale=(?P<scale>[0-9]*))*', link).group()) != 0:
+            match_scale = re.match(r'((?P<pre_link>.*)#scale=(?P<scale>[0-9]*))*', link)
+            scale = match_scale.group('scale')
+            img_html = '<img style="display: block; margin-left: auto; margin-right: auto; height:' + str(scale) + '%" src="' + link + '" alt="' + alt_text + '">'
+        else:
+            img_html = '<img style="display: block; margin-left: auto; margin-right: auto;" src="' + link + '" alt="' + alt_text + '">'
         line = pre_text + img_html + after_text
-        print(link, alt_text)
 
     # link
     while len(re.match(r'((?P<pre_text>.*)\[(?P<alt_text>.*)\]\((?P<link>.*)\)(?P<after_text>.*))*', line).group()) \
@@ -266,13 +276,18 @@ def convert(md_text):
                     order_index += 1
 
             if find_end:
-                # if language is not False:
-                #     html_text += ('<pre><code class="' + language + '">' + html_line + '</code></pre>')
-                # else:
-                html_text += ('<code>' + html_line + '</code>')
+                if language is False:
+                    html_text += ('<pre><code>' + html_line + '</code></pre>')
+                else:
+                    html_text += ('<pre><code class="' + str(language) + '">' + html_line + '</code></pre>')
+
                 # print(language)
                 index = order_index
                 continue
+
+        pre_text = md_text[:index]
+        md_text = pre_text + table(md_text[index:])
+        line = md_text[index]
 
         # header
         is_header, html_line = check_header(line)
@@ -332,7 +347,7 @@ def convert(md_text):
             rest = rest[first_sign + 1:]
             second_sign = rest.index('`')
 
-            line = line + '<code>' + code_replace(rest[:second_sign]) + '</code>'
+            line = line + '<pre><code>' + code_replace(rest[:second_sign]) + '</code></pre>'
             rest = rest[second_sign + 1:]
 
         line = line + convert_not_inline(rest)
@@ -341,7 +356,7 @@ def convert(md_text):
         if not is_unordered_list:
             html_text = html_text + '<br>'
             last_line_unordered = False
-
+    html_text = table(html_text)
     return html_text
 
 
@@ -383,4 +398,4 @@ def help():
 
     :return: redirect to the tutorial
     """
-    return render_template('help.html')
+    return redirect("https://github.com/zhu-y/markdown-toolkit")
